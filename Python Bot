@@ -116,4 +116,4 @@ async def kick(ctx, member: discord.Member):
 
 
 
-client.run("NzQ5NjUwNzc5MTQ4NjQ4NDU5.X0vEsQ.nDh94lhKRpxEClwyyNCYFAffNs8")
+client.run("YOUR BOT TOKEN")
