@@ -1,0 +1,119 @@
+import discord
+import random
+from random import choice
+from discord.ext import commands
+
+client = commands.Bot(command_prefix = ".")
+
+# BOT READY
+
+@client.event
+async def on_ready():
+    print("BOT IS READY")
+    await client.change_presence(status=discord.Status.online, activity= discord.Streaming(name = "You", url ="https://www.twitch.tv/drlupo"))
+
+#PING PONG
+
+@client.command()
+async def ping(ctx):
+    await ctx.send(f"pong!")
+
+#SPAWN
+
+@client.command(aliases=["RPG"])
+async def _RPG(ctx):
+    spawn = "ALRIGHT! YOU HAVE SPAWNED IN A JUNGLE WITH _0 ARMOR_ , _10 HEARTS_ , _50 COINS_ . TYPE_.MOVE_ TO MOVE LOL"
+    await ctx.send(spawn)
+
+#MOVE STRAIGHT
+@client.command(aliases=["MOVE"])
+async def _MOVE(ctx):
+    move = "YOU HAVE MOVED AND FOUND 2 EMPTY PATHS THAT LEAD TO SOMEWHERE. TO MOVE TOWARDS THE LEFT EMPY PATH TYPE _.LEFT_ AND TO MOVE TOWARDS THE RIGHT EMPTY PATH TYPE _.RIGHT_ "
+    await ctx.send(move)
+
+#MOVE LEFT
+@client.command(aliases=["RIGHT"])
+async def _RIGHT(ctx):
+    right = "YOU HAVE ENTERED AN EMPTY PATH AND YOU HAVE ENCOUNTERED WTIH AN ASS. TO STUN THE ASS TYPE _.THROWROCK_  AND TO PUNCH HIM TYPE _.YOLO_"
+    await ctx.send(right)
+
+#STUN
+@client.command(aliases=["STUN"])
+async def _STUN(ctx):
+    stun = " AMAZING! NOW FINISH HIM OFF WITH A FINAL BLOW BY TYPING _.KILL_ AND EARN 10 COINS"
+    await ctx.send(stun)
+
+#PUNCH
+@client.command(aliases=["YOLO"])
+async def _YOLO(ctx):
+    yolo = "MANNN YOU DUMB,YOU JUST LOST 2 HEALTH!. STUN HIM FIRST!"
+    await ctx.send(yolo)
+
+#FINALBLOW
+@client.command(aliases=["KILL"])
+async def _KILL(ctx):
+    kill = "WELL DONE!, YOU HAVE EARNED 10 COINS!"
+    await ctx.send(kill)
+#8BALL
+
+@client.command(aliases=["8ball", "test"])
+async def _8ball(ctx, *, question):
+    responses = ["it is certain.",
+                "it is decidedly so.",
+                "Without a doubt.",
+                "Yes - definitely.",
+                "You may rely on it.",
+                "As I see it, yes.",
+                "Most likely.",
+                "Outlook good.",
+                "Yes.",
+                "Signs point to yes.",
+                "Reply hazy, try again.",
+                "Ask again later.",
+                "Better not tell you now.",
+                "Cannot predict now.",
+                "Concentrate and ask again.",
+                "Don't count on it.",
+                "My reply is no.",
+                "My sources say no.",
+                "Outlook not so good.",
+                "Very doubtful."]
+
+    await ctx.send(f"Question: {question}\n Answer: {random.choice(responses)}" )
+
+#B99 QUOTES
+
+@client.command(aliases=["B99"])
+async def _B99(ctx, *, questions):
+    response = ["Title of your sex tape. — Jake Peralta",
+                "Sarge, with all due respect, I am gonna completely ignore everything you just said. — Jake Peralta" ,
+                "I ate one string bean. It tasted like fish vomit. That was it for me.– Sergeant Jeffords"
+                "The English language can not fully capture the depth and complexity of my thoughts, so I’m incorporating emojis into my speech to better express myself. Winky face.- Gina",
+                "A place where everybody knows your name is hell. You’re describing hell.-Rosa Diaz",
+                "Cool, cool, cool, cool, cool. No doubt, no doubt, no doubt.– Jake Peralta",
+                "If I die, turn my tweets into a book.– Gina",
+                "Fine. but in protest, I’m walking over there extremely slowly! – Jake Peralta",
+                "Jake, why don’t you just do the right thing and jump out of a window? - Gina ",
+                "I asked them if they wanted to embarrass you, and they instantly said yes. – Captain Holt",
+                "Captain Wuntch. Good to see you. But if you’re here, who’s guarding Hades?– Captain Holt",
+                "I’m playing Kwazy Cupcakes, I’m hydrated as hell, and I’m listening to Sheryl Crow. I’ve got my own party going on.– Terry Jeffords",
+                "Anyone over the age of six celebrating a birthday should go to hell.– Rosa",
+                "Captain, turn your greatest weakness into your greatest strength. Like Paris Hilton RE: her sex tape.– Gina "]
+
+    await ctx.send(f"Tagline: {questions}\n Quote: {random.choice(response)}")
+
+# DELETE
+
+@client.command()
+async def clear(ctx, amount=5):
+    await ctx.channel.purge(limit=amount)
+
+# KICK
+
+@client.command()
+async def kick(ctx, member: discord.Member):
+    await member.kick()
+
+
+
+client.run("NzQ5NjUwNzc5MTQ4NjQ4NDU5.X0vEsQ.nDh94lhKRpxEClwyyNCYFAffNs8")
