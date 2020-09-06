@@ -39,7 +39,7 @@ async def _8ball(ctx, *, question):
 # DELETE
 
 @client.command()
-async def clear(ctx, amount=5):
+async def clear(ctx, amount=(the amount of lines you want to delete):
     await ctx.channel.purge(limit=amount)
 
 # KICK
